@@ -9,7 +9,7 @@ module Blinky
           # Already detached
         end
         @handle.set_configuration(device.configurations.first)
-	@handle.usb_claim_interface(0)
+        @handle.usb_claim_interface(0)
         self.extend(recipe)   
         plugins.each do |plugin|
             self.extend(plugin)
