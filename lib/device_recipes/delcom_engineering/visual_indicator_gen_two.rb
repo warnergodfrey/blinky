@@ -32,6 +32,11 @@ module Blinky
 
         private
         def set_colour colour
+          intensity = "\x0A" # 10%
+          #intensity = "\x64" # 100%
+          @handle.usb_control_msg(0x21, 0x09, 0x0635, 0x000, "\x65\x22\x00#{intensity}\x00\x00\x00\x00", 0)
+          @handle.usb_control_msg(0x21, 0x09, 0x0635, 0x000, "\x65\x22\x01#{intensity}\x00\x00\x00\x00", 0)
+          @handle.usb_control_msg(0x21, 0x09, 0x0635, 0x000, "\x65\x22\x02#{intensity}\x00\x00\x00\x00", 0)
           @handle.usb_control_msg(0x21, 0x09, 0x0635, 0x000, "\x65\x0C#{colour}\xFF\x00\x00\x00\x00", 0)
         end
       end
